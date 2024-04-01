@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E1E1E"
+    tools:context=".MainScreen">
+
+    <RelativeLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <ImageButton
+            android:id="@+id/my_info"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/circular_shape"
+            android:src="@drawable/my_info"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            tools:ignore="ContentDescription">
+        </ImageButton>
+
+        <TextView
+            android:id="@+id/my_info_text"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/my_info"
+            android:text="My Info"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="@color/white"
+            tools:ignore="HardcodedText">
+        </TextView>
+
+        <ImageButton
+            android:id="@+id/language_button"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15sp"
+            android:layout_marginEnd="55dp"
+            android:src="@drawable/english"
+            tools:ignore="ContentDescription">
+        </ImageButton>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/day_date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_bar"
+        android:text="Wednesday 31"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textSize="33sp"
+        android:layout_marginStart="10dp"
+        tools:ignore="HardcodedText">
+    </TextView>
+
+    <TextView
+        android:id="@+id/month_year_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/day_date_text"
+        android:layout_marginTop="5dp"
+        android:text="September 2024"
+        android:textColor="@color/white"
+        android:textSize="33sp"
+        android:layout_marginStart="10dp"
+        tools:ignore="HardcodedText">
+    </TextView>
+
+    <TextView
+        android:id="@+id/time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/month_year_text"
+        android:text="21:03"
+        android:textSize="50sp"
+        android:textColor="@color/white"
+        tools:ignore="HardcodedText">
+    </TextView>
+
+    <GridLayout
+        android:id="@+id/apps_table"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/option_menu"
+        android:layout_below="@id/time_text"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/black"
+        android:columnCount="4"
+        android:orientation="horizontal"
+        android:rowCount="4">
+
+        <ImageButton
+            android:id="@+id/call_button"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_margin="10dp"
+            android:background="#03DA40"
+            android:src="@drawable/call"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/gps_button"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_margin="10dp"
+            android:background="#E91E63"
+            android:src="@drawable/gps"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/sos_button"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:layout_margin="10dp"
+            android:background="#FF0000"
+            android:src="@drawable/sos"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/help_row_1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:layout_margin="10dp"
+            android:background="#4C64FB"
+            android:src="@drawable/baseline_question_mark_24"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/notebook_button"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_margin="10dp"
+            android:background="#FFC107"
+            android:src="@drawable/notebook"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/weather_button"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_margin="10dp"
+            android:background="#2196F3"
+            android:src="@drawable/weather"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/wake_button"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:layout_margin="10dp"
+            android:background="#050322"
+            android:src="@drawable/clock"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/help_row_2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_row="1"
+            android:layout_column="3"
+            android:layout_margin="10dp"
+            android:background="#4C64FB"
+            android:src="@drawable/baseline_question_mark_24"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/photo_button"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_margin="10dp"
+            android:background="#43A88F"
+            android:src="@drawable/camera"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/video_button"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:layout_margin="10dp"
+            android:background="#30185C"
+            android:src="@drawable/video"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/gallery_button"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_row="2"
+            android:layout_column="2"
+            android:layout_margin="10dp"
+            android:background="#185C56"
+            android:src="@drawable/gallery"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/help_row_3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_row="2"
+            android:layout_column="3"
+            android:layout_margin="10dp"
+            android:background="#4C64FB"
+            android:src="@drawable/baseline_question_mark_24"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/microphone_button"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:layout_margin="10dp"
+            android:background="@drawable/circular_shape_2"
+            android:src="@drawable/micro"
+            tools:ignore="ContentDescription" />
+
+    </GridLayout>
+
+
+    <LinearLayout
+        android:id="@+id/option_menu"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <ImageButton
+            android:id="@+id/contact_activity"
+            android:src="@drawable/contact"
+            android:background="@color/black"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="ContentDescription">
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/main_activity"
+            android:src="@drawable/cycle"
+            android:background="@color/black"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="ContentDescription">
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/profile_activity"
+            android:src="@drawable/my_info"
+            android:background="@color/black"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="ContentDescription">
+        </ImageButton>
+
+    </LinearLayout>
+
+</RelativeLayout>
