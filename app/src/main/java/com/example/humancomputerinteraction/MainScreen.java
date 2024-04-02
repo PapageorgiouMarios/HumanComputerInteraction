@@ -152,6 +152,11 @@ public class MainScreen extends AppCompatActivity {
         help_row_3_button = (ImageButton) findViewById(R.id.help_row_3);
         //----------------------------------------------------------------
 
+        call_button.setOnClickListener(view -> {
+            Intent call_APP = new Intent(MainScreen.this, PhoneCall.class);
+            startActivity(call_APP);
+        });
+
         notebook_button.setOnClickListener(view -> {
             Intent notebook_APP = new Intent(MainScreen.this, Notebook.class);
             startActivity(notebook_APP);
