@@ -161,6 +161,11 @@ public class MainScreen extends AppCompatActivity {
             Intent notebook_APP = new Intent(MainScreen.this, Notebook.class);
             startActivity(notebook_APP);
         });
+
+        sos_button.setOnClickListener(view -> {
+            Intent sos_APP = new Intent(MainScreen.this, EmergencyCall.class);
+            startActivity(sos_APP);
+        });
     }
 
     private void updateDateTime() {
