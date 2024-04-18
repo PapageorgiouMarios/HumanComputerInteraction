@@ -63,6 +63,8 @@ public class MainScreen extends AppCompatActivity {
     ImageButton gallery_button;
     ImageButton help_row_3_button;
 
+    ImageButton add_contact_button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -165,6 +167,19 @@ public class MainScreen extends AppCompatActivity {
         sos_button.setOnClickListener(view -> {
             Intent sos_APP = new Intent(MainScreen.this, EmergencyCall.class);
             startActivity(sos_APP);
+        });
+
+        wake_button.setOnClickListener(view ->
+        {
+            Intent alarm_APP = new Intent(MainScreen.this, Alarm.class);
+            startActivity(alarm_APP);
+        });
+
+        add_contact_button = (ImageButton) findViewById(R.id.contact_activity);
+
+        add_contact_button.setOnClickListener(view -> {
+            Intent contact_APP = new Intent(MainScreen.this, ContactActivity.class);
+            startActivity(contact_APP);
         });
     }
 

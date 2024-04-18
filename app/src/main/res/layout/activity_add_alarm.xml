@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#332A63"
+    tools:context=".AddAlarm">
+
+    <LinearLayout
+        android:id="@+id/add_reminder"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <EditText
+            android:id="@+id/reminder_title"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_margin="10dp"
+            android:gravity="top|left"
+            android:hint="Reminder"
+            android:inputType="textCapWords|textMultiLine"
+            android:lines="4"
+            android:minLines="4"
+            android:scrollHorizontally="false"
+            android:textColor="@color/white"
+            android:textSize="27sp"
+            tools:ignore="Autofill,HardcodedText,RtlHardcoded">
+        </EditText>
+
+    </LinearLayout>
+    
+    <ScrollView
+        android:id="@+id/options_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/add_reminder"
+        android:background="#1C1C1C">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/details"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:text="Details"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="72dp"
+                tools:ignore="HardcodedText">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ring once or every week"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:textSize="26sp"
+                tools:ignore="HardcodedText">
+            </TextView>
+            
+            <RelativeLayout
+                android:id="@+id/daily_OR_weekly_alarm"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    tools:ignore="UselessParent">
+
+                    <Button
+                        android:id="@+id/one_time_ring"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/teal_200"
+                        android:text="Once"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        tools:ignore="ButtonStyle,HardcodedText">
+                    </Button>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@android:color/transparent"
+                        android:layout_weight="1">
+                    </View>
+
+                    <Button
+                        android:id="@+id/weekly_ring"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/teal_200"
+                        android:text="Weekly"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        tools:ignore="ButtonStyle,HardcodedText">
+                    </Button>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/ring_every_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ring every: "
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:textSize="26sp"
+                tools:ignore="HardcodedText"
+                android:visibility="gone">
+            </TextView>
+
+            <RelativeLayout
+                android:id="@+id/weekly_alarm"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    tools:ignore="UselessParent">
+
+                    <Button
+                        android:id="@+id/sunday_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/teal_200"
+                        android:text="S"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:layout_marginEnd="5dp"
+                        tools:ignore="ButtonStyle,HardcodedText">
+                    </Button>
+
+                    <Button
+                        android:id="@+id/monday_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/teal_200"
+                        android:text="M"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:layout_marginEnd="5dp"
+                        tools:ignore="ButtonStyle,HardcodedText">
+                    </Button>
+
+                    <Button
+                        android:id="@+id/tuesday_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/teal_200"
+                        android:text="T"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:layout_marginEnd="5dp"
+                        tools:ignore="ButtonStyle,HardcodedText">
+                    </Button>
+
+                    <Button
+                        android:id="@+id/wednesday_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/teal_200"
+                        android:text="W"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:layout_marginEnd="5dp"
+                        tools:ignore="ButtonStyle,HardcodedText">
+                    </Button>
+
+                    <Button
+                        android:id="@+id/thursday_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/teal_200"
+                        android:text="T"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:layout_marginEnd="5dp"
+                        tools:ignore="ButtonStyle,HardcodedText">
+                    </Button>
+
+                    <Button
+                        android:id="@+id/friday_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/teal_200"
+                        android:text="F"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:layout_marginEnd="5dp"
+                        tools:ignore="ButtonStyle,HardcodedText">
+                    </Button>
+
+                    <Button
+                        android:id="@+id/saturday_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/teal_200"
+                        android:text="S"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        tools:ignore="ButtonStyle,HardcodedText">
+                    </Button>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/time_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/alarm_time"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_centerVertical="true"
+                    tools:ignore="ContentDescription">
+                </ImageView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/time_icon"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:id="@+id/time_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:text="Ring Time"
+                        tools:ignore="HardcodedText">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/set_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp">
+                    </TextView>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/add_new_alarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="@color/teal_200"
+                android:text="SAVE ALARM"
+                android:textColor="@color/white"
+                android:textSize="23sp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

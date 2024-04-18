@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#017134"
+    tools:context=".ContactActivity">
+
+    <ListView
+        android:id="@+id/existant_contacts"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_above="@id/add_contact_button"
+        android:layout_below="@id/contact_title"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="#8BC34A"
+        android:visibility="invisible">
+    </ListView>
+
+    <TextView
+        android:id="@+id/contact_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contact List"
+        android:textColor="@color/white"
+        android:textStyle="italic"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:background="@color/black"
+        tools:ignore="HardcodedText">
+    </TextView>
+
+    <RelativeLayout
+        android:id="@+id/empty_contact_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/empty_contact_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Click the button below to add a new number in your contacts"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            tools:ignore="HardcodedText">
+        </TextView>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/add_contact_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#002B27"
+        android:text="ADD CONTACT NUMBER"
+        android:textColor="@color/white"
+        android:textSize="23sp"
+        tools:ignore="HardcodedText">
+    </Button>
+
+
+</RelativeLayout>

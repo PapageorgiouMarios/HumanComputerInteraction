@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddContact"
+    android:background="#009632">
+
+    <TextView
+        android:id="@+id/describe_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textColor="@color/white"
+        android:background="@color/black"
+        android:textSize="25sp"
+        android:text="Write the person's first and last name as well as their phone number"
+        tools:ignore="HardcodedText">
+    </TextView>
+
+    <ImageView
+        android:id="@+id/bigImage2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/describe_add"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/my_info"
+        android:scaleType="centerCrop"
+        android:background="@color/black"
+        tools:ignore="ContentDescription">
+    </ImageView>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/contact_first_name_textfield"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bigImage2"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="25sp"
+        android:hint="Type first name here"
+        tools:ignore="HardcodedText">
+    </com.google.android.material.textfield.TextInputEditText>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/contact_last_name_textfield"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contact_first_name_textfield"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="25sp"
+        android:hint="Type last name here"
+        tools:ignore="HardcodedText">
+    </com.google.android.material.textfield.TextInputEditText>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/contact_number_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contact_last_name_textfield"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="25sp"
+        android:hint="Type phone number here"
+        tools:ignore="HardcodedText">
+    </com.google.android.material.textfield.TextInputEditText>
+
+    <Button
+        android:id="@+id/add_new_contact_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#002B27"
+        android:layout_below="@id/contact_number_field"
+        android:text="ADD CONTACT NUMBER"
+        android:textColor="@color/white"
+        android:textSize="23sp"
+        tools:ignore="HardcodedText">
+    </Button>
+
+</RelativeLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:background="@color/black"
+    android:padding="15dp"
+    android:layout_margin="15dp">
+
+    <TextView
+        android:id="@+id/alarm_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="00:00"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        tools:ignore="HardcodedText">
+    </TextView>
+
+    <TextView
+        android:id="@+id/days_to_ring"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday"
+        android:textColor="@color/white"
+        android:layout_below="@id/alarm_time"
+        android:layout_marginStart="10dp"
+        android:textSize="15sp"
+        android:maxLines="2"
+        tools:ignore="HardcodedText">
+    </TextView>
+
+    <TextView
+        android:id="@+id/reminder_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Note Note Note Note Note Note Note Note "
+        android:layout_below="@id/days_to_ring"
+        android:textColor="@color/white"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:maxLines="4"
+        tools:ignore="HardcodedText">
+    </TextView>
+
+
+    <Switch
+        android:id="@+id/switch_on_off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/alarm_time"
+        android:layout_marginTop="10dp"
+        android:checked="true"
+        tools:ignore="UseSwitchCompatOrMaterialXml">
+    </Switch>
+
+    <Button
+        android:id="@+id/delete_alarm"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/switch_on_off"
+        android:backgroundTint="#FF0000"
+        android:text="Delete"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        tools:ignore="ButtonStyle,HardcodedText">
+    </Button>
+
+</RelativeLayout>
