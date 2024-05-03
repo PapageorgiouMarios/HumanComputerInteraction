@@ -5,32 +5,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
 public class ContactAdapter extends BaseAdapter
 {
     private final Context context;
-    private final ArrayList<Contact> contacts;
+    private final ArrayList<String> json_contacts;
 
-    public ContactAdapter(Context context, ArrayList<Contact> contacts)
+    public ContactAdapter(Context context, ArrayList<String> contacts)
     {
         this.context = context;
-        this.contacts = contacts;
+        this.json_contacts = contacts;
     }
 
     @Override
     public int getCount()
     {
-        return contacts.size();
+        return json_contacts.size();
     }
 
     @Override
     public Object getItem(int position)
     {
-        return contacts.get(position);
+        return json_contacts.get(position);
     }
 
     @Override
@@ -56,7 +57,8 @@ public class ContactAdapter extends BaseAdapter
             holderView = (ContactAdapter.HolderView) contextView.getTag();
         }
 
-        Contact contact = contacts.get(position);
+        Gson gson = new Gson();
+        Contact contact = gson.fromJson(json_contacts.get(position), Contact.class);
 
         holderView.first_name.setText(contact.getFirst_name());
         holderView.last_name.setText(contact.getLast_name());

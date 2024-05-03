@@ -3,11 +3,17 @@ package com.example.humancomputerinteraction;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Camera;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -64,6 +70,9 @@ public class MainScreen extends AppCompatActivity {
     ImageButton help_row_3_button;
 
     ImageButton add_contact_button;
+    ImageButton flash_button;
+
+    boolean flash = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -91,6 +100,7 @@ public class MainScreen extends AppCompatActivity {
 
         //--------------------------Voice command Button--------------------------
         voice_command_button = (ImageButton) findViewById(R.id.microphone_button);
+        flash_button = (ImageButton) findViewById(R.id.flash_button);
         //------------------------------------------------------------------------
 
         System.out.println("Check .xml file assets");
@@ -178,9 +188,49 @@ public class MainScreen extends AppCompatActivity {
         add_contact_button = (ImageButton) findViewById(R.id.contact_activity);
 
         add_contact_button.setOnClickListener(view -> {
-            Intent contact_APP = new Intent(MainScreen.this, ContactActivity.class);
+            Intent contact_APP = new Intent(MainScreen.this, ContactList.class);
             startActivity(contact_APP);
         });
+
+        flash_button.setOnClickListener(view ->
+        {
+            if(!flash)
+            {
+                flashSwitch(true);
+                flash = true;
+            }
+            else
+            {
+                flashSwitch(false);
+                flash =  false;
+            }
+
+        });
+    }
+
+    private void flashSwitch(boolean state)
+    {
+        if(this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH))
+        {
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            {
+                CameraManager cameraManager = (CameraManager) getSystemService(CAMERA_SERVICE);
+                String cameraId = null;
+                try
+                {
+                    cameraId = cameraManager.getCameraIdList()[0];
+                    cameraManager.setTorchMode(cameraId, state);
+                }
+                catch (CameraAccessException e)
+                {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        else
+        {
+            Toast.makeText(this, "No flashlight!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void updateDateTime() {

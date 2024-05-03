@@ -252,6 +252,18 @@
             android:src="@drawable/micro"
             tools:ignore="ContentDescription" />
 
+        <ImageButton
+            android:id="@+id/flash_button"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_row="3"
+            android:layout_column="2"
+            android:layout_margin="10dp"
+            android:background="#F85F23"
+            android:src="@drawable/flashlight"
+            tools:ignore="ContentDescription" />
+
+
     </GridLayout>
 
 

@@ -5,44 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#017134"
-    tools:context=".ContactActivity">
-
-    <ListView
-        android:id="@+id/existant_contacts"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_above="@id/add_contact_button"
-        android:layout_below="@id/contact_title"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="20dp"
-        android:background="#8BC34A"
-        android:visibility="invisible">
-    </ListView>
-
-    <TextView
-        android:id="@+id/contact_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Contact List"
-        android:textColor="@color/white"
-        android:textStyle="italic"
-        android:textSize="40sp"
-        android:gravity="center"
-        android:background="@color/black"
-        tools:ignore="HardcodedText">
-    </TextView>
+    tools:context=".ContactList">
 
     <RelativeLayout
-        android:id="@+id/empty_contact_list"
+        android:id="@+id/no_contacts_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
 
         <TextView
-            android:id="@+id/empty_contact_text"
+            android:id="@+id/no_contacts_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -56,19 +28,33 @@
 
     </RelativeLayout>
 
+    <ListView
+        android:id="@+id/existant_contacts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="#8BC34A">
+    </ListView>
+
     <Button
         android:id="@+id/add_contact_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
         android:backgroundTint="#002B27"
         android:text="ADD CONTACT NUMBER"
         android:textColor="@color/white"
-        android:textSize="23sp"
+        android:textSize="20sp"
         tools:ignore="HardcodedText">
     </Button>
-
 
 </RelativeLayout>

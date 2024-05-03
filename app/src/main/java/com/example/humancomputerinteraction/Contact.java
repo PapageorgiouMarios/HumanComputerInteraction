@@ -13,7 +13,7 @@ public class Contact
         this.phone_number = phone_number;
     }
 
-    private void printStats()
+    public void printStats()
     {
         System.out.println("Contact first name: " + first_name);
         System.out.println("Contact last name: " + last_name);
