@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Camera;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,34 +18,13 @@ import java.util.Calendar;
 import java.util.Locale;
 
 
-public class MainScreen extends AppCompatActivity {
-
-    //------Top of the screen------
-    ImageButton my_info_button;
-    TextView my_info_text;
-    ImageButton language_button;
-    //-----------------------------
-
-    //-------Date-------
+public class MainScreen extends AppCompatActivity
+{
     TextView day_and_date;
-    //------------------
-
-    //-----Month and Year-----
     TextView month_and_year;
-    //------------------------
-
-    //------Time------
     TextView hour;
-    //----------------
-
-    //------Voice command Button------
     ImageButton voice_command_button;
-    //--------------------------------
-
-    String language = "ENG";
-    boolean english = true;
     Locale locale = Locale.ENGLISH;
-
     SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd", locale);
     SimpleDateFormat monthYearFormat = new SimpleDateFormat("MMMM yyyy", locale);
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", locale);
@@ -59,20 +36,17 @@ public class MainScreen extends AppCompatActivity {
     ImageButton call_button;
     ImageButton gps_button;
     ImageButton sos_button;
-    ImageButton help_row_1_button;
     ImageButton notebook_button;
     ImageButton weather_button;
     ImageButton wake_button;
-    ImageButton help_row_2_button;
     ImageButton photo_button;
     ImageButton video_button;
     ImageButton gallery_button;
-    ImageButton help_row_3_button;
-
     ImageButton add_contact_button;
     ImageButton flash_button;
-
     boolean flash = false;
+
+    TextView flash_on_off;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -80,11 +54,7 @@ public class MainScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
 
-        //------------------Top of the screen------------------
-        my_info_button = (ImageButton) findViewById(R.id.my_info);
-        my_info_text = (TextView) findViewById(R.id.my_info_text);
-        language_button = (ImageButton) findViewById(R.id.language_button);
-        //------------------------------------------------------
+        getSupportActionBar().hide();
 
         //----------------------------Date----------------------------
         day_and_date = (TextView) findViewById(R.id.day_date_text);
@@ -106,8 +76,6 @@ public class MainScreen extends AppCompatActivity {
         System.out.println("Check .xml file assets");
         CheckAssets();
 
-        language_button.setOnClickListener(view -> ChangeLanguage());
-
         updateDateTime();
 
         new Thread(new Runnable() {
@@ -116,12 +84,7 @@ public class MainScreen extends AppCompatActivity {
                 while (!Thread.interrupted()) {
                     try {
                         Thread.sleep(1000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                updateDateTime();
-                            }
-                        });
+                        runOnUiThread(() -> updateDateTime());
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -129,23 +92,17 @@ public class MainScreen extends AppCompatActivity {
             }
         }).start();
 
-        english_voice = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int i) {
-                if(i != TextToSpeech.ERROR)
-                {
-                    english_voice.setLanguage(Locale.ENGLISH);
-                }
+        english_voice = new TextToSpeech(this, i -> {
+            if(i != TextToSpeech.ERROR)
+            {
+                english_voice.setLanguage(Locale.ENGLISH);
             }
         });
 
-        greek_voice = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int i) {
-                if(i != TextToSpeech.ERROR)
-                {
-                    greek_voice.setLanguage(new Locale("el", "GR"));
-                }
+        greek_voice = new TextToSpeech(this, i -> {
+            if(i != TextToSpeech.ERROR)
+            {
+                greek_voice.setLanguage(new Locale("el", "GR"));
             }
         });
 
@@ -153,15 +110,12 @@ public class MainScreen extends AppCompatActivity {
         call_button = (ImageButton) findViewById(R.id.call_button);
         gps_button = (ImageButton) findViewById(R.id.gps_button);
         sos_button = (ImageButton) findViewById(R.id.sos_button);
-        help_row_1_button = (ImageButton) findViewById(R.id.help_row_1);
         notebook_button = (ImageButton) findViewById(R.id.notebook_button);
         weather_button = (ImageButton) findViewById(R.id.weather_button);
         wake_button = (ImageButton) findViewById(R.id.wake_button);
-        help_row_2_button = (ImageButton) findViewById(R.id.help_row_2);
         photo_button = (ImageButton) findViewById(R.id.photo_button);
         video_button = (ImageButton) findViewById(R.id.video_button);
         gallery_button = (ImageButton) findViewById(R.id.gallery_button);
-        help_row_3_button = (ImageButton) findViewById(R.id.help_row_3);
         //----------------------------------------------------------------
 
         call_button.setOnClickListener(view -> {
@@ -192,17 +146,21 @@ public class MainScreen extends AppCompatActivity {
             startActivity(contact_APP);
         });
 
+        flash_on_off = (TextView) findViewById(R.id.flash_on_off_text);
+
         flash_button.setOnClickListener(view ->
         {
             if(!flash)
             {
                 flashSwitch(true);
                 flash = true;
+                flash_on_off.setText("Flash / ON");
             }
             else
             {
                 flashSwitch(false);
                 flash =  false;
+                flash_on_off.setText("Flash / OFF");
             }
 
         });
@@ -247,12 +205,6 @@ public class MainScreen extends AppCompatActivity {
 
     private void CheckAssets()
     {
-        if(my_info_button != null) {System.out.println("My info button set");}
-
-        if(my_info_text != null) {System.out.println("My info text set");}
-
-        if(language_button != null) {System.out.println("Language button set");}
-
         if(day_and_date != null) {System.out.println("Day and date text set");}
 
         if(month_and_year != null) {System.out.println("Month and year text set");}
@@ -260,44 +212,6 @@ public class MainScreen extends AppCompatActivity {
         if(hour != null) {System.out.println("Hour text set");}
 
         if(voice_command_button != null) {System.out.println("Voice command button set");}
-    }
-
-    private void ChangeLanguage()
-    {
-        if(language.equals("ENG") && english)
-        {
-            Speak(greek_voice, "Ελληνικά");
-
-            language_button.setImageResource(R.drawable.greek);
-            english = false;
-            language = "GR";
-            locale = new Locale("el", "GR");
-
-            dateFormat = new SimpleDateFormat("EEEE dd", locale);
-            monthYearFormat = new SimpleDateFormat("MMMM yyyy", locale);
-            timeFormat = new SimpleDateFormat("HH:mm", locale);
-        }
-        else if(language.equals("GR") && !english)
-        {
-            Speak(english_voice, "English");
-
-            language_button.setImageResource(R.drawable.english);
-            english = true;
-            language = "ENG";
-            locale = Locale.ENGLISH;
-
-            dateFormat = new SimpleDateFormat("EEEE dd", locale);
-            monthYearFormat = new SimpleDateFormat("MMMM yyyy", locale);
-            timeFormat = new SimpleDateFormat("HH:mm", locale);
-        }
-        else
-        {
-            System.out.println("Error in language change!");
-        }
-
-        System.out.println("Language: " + language);
-        System.out.println("English boolean set to: " + english);
-        System.out.println("Locale: " + locale.getDisplayLanguage());
     }
 
     private void Speak(TextToSpeech voice, String sentence)
@@ -315,5 +229,11 @@ public class MainScreen extends AppCompatActivity {
         }
 
         super.onPause();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        System.out.println("Back pressed nothing happening");
     }
 }
