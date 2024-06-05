@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -70,12 +71,14 @@ public class EmergencyAdapter extends BaseAdapter
         private final ImageView icon;
         private final TextView name;
         private final TextView number;
+        private final Button call_button;
 
         public HolderView(View view)
         {
             icon = (ImageView) view.findViewById(R.id.emergency_pic);
             name = (TextView) view.findViewById(R.id.emergency_name);
             number = (TextView) view.findViewById(R.id.emergency_number);
+            call_button = (Button) view.findViewById(R.id.call_emergency_contact);
         }
     }
 }
