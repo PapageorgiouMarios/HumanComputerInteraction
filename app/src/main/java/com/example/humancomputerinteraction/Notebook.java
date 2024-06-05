@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,6 +31,7 @@ public class Notebook extends AppCompatActivity
     static List<String> notes;
     static ArrayAdapter adapter;
 
+    Button addNote;
     SharedPreferences sp;
 
     @Override
@@ -93,6 +95,12 @@ public class Notebook extends AppCompatActivity
                 return true;
             }
         });
+
+        addNote = (Button) findViewById(R.id.add_note_button);
+        addNote.setOnClickListener(view ->
+        {
+            startActivity(new Intent(getApplicationContext(), NotebookEdit.class));
+        });
     }
 
     @Override
@@ -110,7 +118,7 @@ public class Notebook extends AppCompatActivity
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)//maybe this should go
     {
         super.onOptionsItemSelected(item);
 

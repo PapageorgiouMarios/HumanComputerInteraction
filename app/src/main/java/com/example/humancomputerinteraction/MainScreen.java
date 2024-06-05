@@ -1,25 +1,30 @@
 package com.example.humancomputerinteraction;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
 
-public class MainScreen extends AppCompatActivity
-{
+public class MainScreen extends AppCompatActivity {
+
     TextView day_and_date;
     TextView month_and_year;
     TextView hour;
@@ -43,14 +48,17 @@ public class MainScreen extends AppCompatActivity
     ImageButton video_button;
     ImageButton gallery_button;
     ImageButton add_contact_button;
+    ImageButton mic;
     ImageButton flash_button;
     boolean flash = false;
 
     TextView flash_on_off;
 
+    private static final int REQUEST_SPEECH_RECOGNIZER = 3000;
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
 
@@ -93,15 +101,13 @@ public class MainScreen extends AppCompatActivity
         }).start();
 
         english_voice = new TextToSpeech(this, i -> {
-            if(i != TextToSpeech.ERROR)
-            {
+            if (i != TextToSpeech.ERROR) {
                 english_voice.setLanguage(Locale.ENGLISH);
             }
         });
 
         greek_voice = new TextToSpeech(this, i -> {
-            if(i != TextToSpeech.ERROR)
-            {
+            if (i != TextToSpeech.ERROR) {
                 greek_voice.setLanguage(new Locale("el", "GR"));
             }
         });
@@ -150,43 +156,74 @@ public class MainScreen extends AppCompatActivity
 
         flash_button.setOnClickListener(view ->
         {
-            if(!flash)
-            {
+            if (!flash) {
                 flashSwitch(true);
                 flash = true;
                 flash_on_off.setText("Flash / ON");
-            }
-            else
-            {
+            } else {
                 flashSwitch(false);
-                flash =  false;
+                flash = false;
                 flash_on_off.setText("Flash / OFF");
             }
-
         });
+
+        mic = (ImageButton) findViewById((R.id.microphone_button));
+
+        mic.setOnClickListener((view ->
+        {
+            mic.setBackgroundColor(Color.rgb(11, 200, 11));
+
+            recogniseSpeech();
+        }));
     }
 
-    private void flashSwitch(boolean state)
+    private void recogniseSpeech()
     {
-        if(this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH))
-        {
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            {
-                CameraManager cameraManager = (CameraManager) getSystemService(CAMERA_SERVICE);
-                String cameraId = null;
-                try
-                {
-                    cameraId = cameraManager.getCameraIdList()[0];
-                    cameraManager.setTorchMode(cameraId, state);
-                }
-                catch (CameraAccessException e)
-                {
-                    throw new RuntimeException(e);
+
+        Intent intent = new Intent
+                (RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Say Something");
+
+        try {
+            startActivityForResult(intent, REQUEST_SPEECH_RECOGNIZER);
+        }catch (Exception e){
+            Toast.makeText(this, " "+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        super.onActivityResult(requestCode,resultCode,data);
+
+        switch(requestCode){
+            case REQUEST_SPEECH_RECOGNIZER:{
+                if(resultCode==RESULT_OK && null!=data){
+                    ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    String a = result.get(0);
+                    Log.d("m",a);
+
+
                 }
             }
         }
-        else
-        {
+
+    }
+
+    private void flashSwitch(boolean state) {
+        if (this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                CameraManager cameraManager = (CameraManager) getSystemService(CAMERA_SERVICE);
+                String cameraId = null;
+                try {
+                    cameraId = cameraManager.getCameraIdList()[0];
+                    cameraManager.setTorchMode(cameraId, state);
+                } catch (CameraAccessException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        } else {
             Toast.makeText(this, "No flashlight!", Toast.LENGTH_SHORT).show();
         }
     }
@@ -203,27 +240,32 @@ public class MainScreen extends AppCompatActivity
         hour.setText(currentTime);
     }
 
-    private void CheckAssets()
-    {
-        if(day_and_date != null) {System.out.println("Day and date text set");}
+    private void CheckAssets() {
+        if (day_and_date != null) {
+            System.out.println("Day and date text set");
+        }
 
-        if(month_and_year != null) {System.out.println("Month and year text set");}
+        if (month_and_year != null) {
+            System.out.println("Month and year text set");
+        }
 
-        if(hour != null) {System.out.println("Hour text set");}
+        if (hour != null) {
+            System.out.println("Hour text set");
+        }
 
-        if(voice_command_button != null) {System.out.println("Voice command button set");}
+        if (voice_command_button != null) {
+            System.out.println("Voice command button set");
+        }
     }
 
-    private void Speak(TextToSpeech voice, String sentence)
-    {
+    private void Speak(TextToSpeech voice, String sentence) {
         voice.speak(sentence, TextToSpeech.QUEUE_FLUSH, null, null);
     }
 
     @Override
     protected void onPause() {
 
-        if(english_voice != null && greek_voice != null)
-        {
+        if (english_voice != null && greek_voice != null) {
             english_voice.stop();
             greek_voice.stop();
         }
@@ -232,8 +274,7 @@ public class MainScreen extends AppCompatActivity
     }
 
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         System.out.println("Back pressed nothing happening");
     }
 }
