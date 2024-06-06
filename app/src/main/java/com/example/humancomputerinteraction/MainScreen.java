@@ -2,7 +2,6 @@ package com.example.humancomputerinteraction;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -23,7 +22,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 
-public class MainScreen extends AppCompatActivity {
+public class MainScreen extends AppCompatActivity{
 
     TextView day_and_date;
     TextView month_and_year;
@@ -54,7 +53,7 @@ public class MainScreen extends AppCompatActivity {
 
     TextView flash_on_off;
 
-    private static final int REQUEST_SPEECH_RECOGNIZER = 3000;
+    static final int REQUEST_SPEECH_RECOGNIZER = 3000;
 
 
     @Override
@@ -122,6 +121,9 @@ public class MainScreen extends AppCompatActivity {
         photo_button = (ImageButton) findViewById(R.id.photo_button);
         video_button = (ImageButton) findViewById(R.id.video_button);
         gallery_button = (ImageButton) findViewById(R.id.gallery_button);
+        flash_on_off = (TextView) findViewById(R.id.flash_on_off_text);
+        mic = (ImageButton) findViewById((R.id.microphone_button));
+        add_contact_button = (ImageButton) findViewById(R.id.contact_activity);
         //----------------------------------------------------------------
 
         call_button.setOnClickListener(view -> {
@@ -145,14 +147,15 @@ public class MainScreen extends AppCompatActivity {
             startActivity(alarm_APP);
         });
 
-        add_contact_button = (ImageButton) findViewById(R.id.contact_activity);
-
         add_contact_button.setOnClickListener(view -> {
             Intent contact_APP = new Intent(MainScreen.this, ContactList.class);
             startActivity(contact_APP);
         });
 
-        flash_on_off = (TextView) findViewById(R.id.flash_on_off_text);
+        gallery_button.setOnClickListener(view -> {
+            Intent galleryApp = new Intent(MainScreen.this, Gallery.class);
+            startActivity(galleryApp);
+        });
 
         flash_button.setOnClickListener(view ->
         {
@@ -167,7 +170,7 @@ public class MainScreen extends AppCompatActivity {
             }
         });
 
-        mic = (ImageButton) findViewById((R.id.microphone_button));
+
 
         mic.setOnClickListener((view ->
         {
@@ -177,7 +180,7 @@ public class MainScreen extends AppCompatActivity {
         }));
     }
 
-    private void recogniseSpeech()
+    public void recogniseSpeech()
     {
 
         Intent intent = new Intent

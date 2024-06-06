@@ -12,6 +12,9 @@
     <uses-feature android:name="android.hardware.camera"/>
     <uses-feature android:name="android.hardware.camera.flash"/>
     <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -48,6 +51,9 @@
             android:exported="false" />
         <activity
             android:name=".FillStatusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Gallery"
             android:exported="false" />
         <activity
             android:name=".MainScreen"
