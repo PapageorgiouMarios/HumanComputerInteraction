@@ -122,7 +122,7 @@ public class MainScreen extends AppCompatActivity{
         video_button = (ImageButton) findViewById(R.id.video_button);
         gallery_button = (ImageButton) findViewById(R.id.gallery_button);
         flash_on_off = (TextView) findViewById(R.id.flash_on_off_text);
-        mic = (ImageButton) findViewById((R.id.microphone_button));
+        mic = (ImageButton) findViewById(R.id.microphone_button);
         add_contact_button = (ImageButton) findViewById(R.id.contact_activity);
         //----------------------------------------------------------------
 

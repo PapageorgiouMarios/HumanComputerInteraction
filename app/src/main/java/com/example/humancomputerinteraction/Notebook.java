@@ -27,10 +27,8 @@ public class Notebook extends AppCompatActivity
 {
     ListView notes_list;
     TextView empty;
-
     static List<String> notes;
     static ArrayAdapter adapter;
-
     Button addNote;
     SharedPreferences sp;
 

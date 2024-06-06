@@ -14,6 +14,7 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.HashSet;
@@ -23,13 +24,14 @@ public class NotebookEdit extends AppCompatActivity
     EditText note_edit;
     int note_id;
     SharedPreferences sp;
+    Button saveButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notebook_edit);
-
+        Button saveButton = (Button) findViewById(R.id.save_button);
 
         sp = this.getSharedPreferences("com.example.humancomputerinteraction", Context.MODE_PRIVATE);
         note_edit = (EditText) findViewById(R.id.note_edit);
@@ -46,6 +48,8 @@ public class NotebookEdit extends AppCompatActivity
             Notebook.notes.add("");
             note_id = Notebook.notes.size() - 1;
         }
+
+
 
         note_edit.addTextChangedListener(new TextWatcher()
         {

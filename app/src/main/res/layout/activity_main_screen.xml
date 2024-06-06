@@ -292,9 +292,11 @@
                 android:id="@+id/microphone_button"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
+
                 android:background="@drawable/circular_shape_2"
                 android:src="@drawable/micro"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
