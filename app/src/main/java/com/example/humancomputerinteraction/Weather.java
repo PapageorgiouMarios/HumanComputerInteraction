@@ -53,14 +53,81 @@ public class Weather extends AppCompatActivity {
         String city = cityEditText.getText().toString().trim();
         Log.i("Weather", "findTemperature()");
         if (!city.isEmpty()) {
-            new WeatherAsyncTask().execute(city);
+            //new WeatherAsyncTask().execute(city);
+           func(city);
         } else {
 
             Log.e("Weather", "City name is empty");
         }
     }
 
-    private class WeatherAsyncTask extends AsyncTask<String, Void, JSONObject> {
+
+        protected void func(String... params) {
+            String city = params[0];
+            JSONObject jsonResponse = null;
+
+            Log.i("Weather", "70");
+
+            try {
+                // Construct API URL based on city name
+                String apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city +
+                        "&appid=2aa1679ccf6c74ccbc7270f2035404c0";
+
+                //Open connection to the API URL
+                URL url = new URL(apiUrl);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+
+                Log.i("Weather", "api");
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                StringBuilder response = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
+                }
+                reader.close();
+
+                // Parse JSON response
+                jsonResponse = new JSONObject(response.toString());
+            } catch (IOException | org.json.JSONException e) {
+                Log.e("Weather", "Error fetching data: " + e.getMessage());
+            }
+
+            Log.i("Weather", "postExecution");
+
+            if (jsonResponse != null) {
+                try {
+                    JSONObject mainData = jsonResponse.getJSONObject("main");
+                    double temperatureKelvin = mainData.getDouble("temp");
+                    double tempMinKelvin = mainData.getDouble("temp_min");
+                    double tempMaxKelvin = mainData.getDouble("temp_max");
+                    int humidity = mainData.getInt("humidity");
+
+                    String tmK = String.valueOf(temperatureKelvin);
+                    Log.i("Weather",tmK);
+
+
+                    // Convert temperature units
+/*                    double temperatureCelsius = temperatureKelvin - 273.15;
+                    double tempMinCelsius = tempMinKelvin - 273.15;
+                    double tempMaxCelsius = tempMaxKelvin - 273.15;
+
+                    // Format temperature values
+                    DecimalFormat df = new DecimalFormat("#0.0");
+                    temperatureCelsius = Double.parseDouble(df.format(temperatureCelsius));
+                    tempMinCelsius = Double.parseDouble(df.format(tempMinCelsius));
+                    tempMaxCelsius = Double.parseDouble(df.format(tempMaxCelsius));*/
+
+                } catch (org.json.JSONException e) {
+                    Log.e("Weather", "Error parsing JSON response: " + e.getMessage());
+                }
+            } else {
+                Log.e("Weather", "Empty JSON response");
+            }
+        }
+
+/*    private class WeatherAsyncTask extends AsyncTask<String, Void, JSONObject> {
 
         @Override
         protected JSONObject doInBackground(String... params) {
@@ -127,21 +194,21 @@ public class Weather extends AppCompatActivity {
                     tempMinCelsius = Double.parseDouble(df.format(tempMinCelsius));
                     tempMaxCelsius = Double.parseDouble(df.format(tempMaxCelsius));
 
-                    /*String tempC = String.valueOf(temperatureCelsius);
+                    *//*String tempC = String.valueOf(temperatureCelsius);
                     String tempm = String.valueOf(tempMinCelsius);
                     String tempM = String.valueOf(tempMaxCelsius);
-                    String hmdt = String.valueOf(humidity);*/
+                    String hmdt = String.valueOf(humidity);*//*
 
-                    /*Log.e("Weather",tempC);
+                    *//*Log.e("Weather",tempC);
                     Log.e("Weather",tempm);
                     Log.e("Weather",tempM);
-                    Log.e("Weather",hmdt);*/
+                    Log.e("Weather",hmdt);*//*
 
                     // Update UI with temperature data
-/*                    temperatureTextView.setText("Temperature: " + temperatureCelsius + "°C");
+*//*                    temperatureTextView.setText("Temperature: " + temperatureCelsius + "°C");
                     minTemperatureTextView.setText("Minimum Temperature: " + tempMinCelsius + "°C");
                     maxTemperatureTextView.setText("Maximum Temperature: " + tempMaxCelsius + "°C");
-                    humidityTextView.setText("Humidity: " + humidity + "%");*/
+                    humidityTextView.setText("Humidity: " + humidity + "%");*//*
                 } catch (org.json.JSONException e) {
                     Log.e("Weather", "Error parsing JSON response: " + e.getMessage());
                 }
@@ -149,5 +216,5 @@ public class Weather extends AppCompatActivity {
                 Log.e("Weather", "Empty JSON response");
             }
         }
-    }
+    }*/
 }

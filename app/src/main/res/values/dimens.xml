@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="icon_dimensions">75dp</dimen>
+    <dimen name="icon_text_size">16sp</dimen>
+    <dimen name="app_margins">10dp</dimen>
+</resources>

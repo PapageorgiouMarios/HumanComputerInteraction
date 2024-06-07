@@ -61,12 +61,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_margin="10dp">
+            android:layout_margin="@dimen/app_margins">
 
             <ImageButton
                 android:id="@+id/call_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="@dimen/icon_dimensions"
+                android:layout_height="@dimen/icon_dimensions"
                 android:background="#03DA40"
                 android:src="@drawable/call"
                 tools:ignore="ContentDescription" />
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:text="Phone Call"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="@dimen/icon_text_size"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
 
@@ -86,12 +86,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_margin="10dp">
+            android:layout_margin="@dimen/app_margins">
 
             <ImageButton
                 android:id="@+id/gps_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="@dimen/icon_dimensions"
+                android:layout_height="@dimen/icon_dimensions"
                 android:background="#E91E63"
                 android:src="@drawable/map"
                 tools:ignore="ContentDescription" />
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:text="Map"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="@dimen/icon_text_size"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
 
@@ -111,12 +111,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_margin="10dp">
+            android:layout_margin="@dimen/app_margins">
 
             <ImageButton
                 android:id="@+id/sos_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="@dimen/icon_dimensions"
+                android:layout_height="@dimen/icon_dimensions"
                 android:background="#FF0000"
                 android:src="@drawable/sos"
                 tools:ignore="ContentDescription" />
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:text="SOS Call"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="@dimen/icon_text_size"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
 
@@ -136,12 +136,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_margin="10dp">
+            android:layout_margin="@dimen/app_margins">
 
             <ImageButton
                 android:id="@+id/notebook_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="@dimen/icon_dimensions"
+                android:layout_height="@dimen/icon_dimensions"
                 android:background="#FFC107"
                 android:src="@drawable/notebook"
                 tools:ignore="ContentDescription" />
@@ -151,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:text="Notebook"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="@dimen/icon_text_size"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
 
@@ -161,12 +161,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_margin="10dp">
+            android:layout_margin="@dimen/app_margins">
 
             <ImageButton
                 android:id="@+id/weather_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="@dimen/icon_dimensions"
+                android:layout_height="@dimen/icon_dimensions"
                 android:background="#2196F3"
                 android:src="@drawable/weather"
                 tools:ignore="ContentDescription" />
@@ -176,7 +176,7 @@
                 android:layout_height="wrap_content"
                 android:text="Weather"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="@dimen/icon_text_size"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
 
@@ -186,12 +186,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_margin="10dp">
+            android:layout_margin="@dimen/app_margins">
 
             <ImageButton
                 android:id="@+id/wake_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="@dimen/icon_dimensions"
+                android:layout_height="@dimen/icon_dimensions"
                 android:background="#050322"
                 android:src="@drawable/clock"
                 tools:ignore="ContentDescription" />
@@ -201,7 +201,7 @@
                 android:layout_height="wrap_content"
                 android:text="Reminder"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="@dimen/icon_text_size"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
 
@@ -211,12 +211,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_margin="10dp">
+            android:layout_margin="@dimen/app_margins">
 
             <ImageButton
                 android:id="@+id/photo_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="@dimen/icon_dimensions"
+                android:layout_height="@dimen/icon_dimensions"
                 android:background="#43A88F"
                 android:src="@drawable/camera"
                 tools:ignore="ContentDescription" />
@@ -226,7 +226,7 @@
                 android:layout_height="wrap_content"
                 android:text="Photo"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="@dimen/icon_text_size"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
 
@@ -236,12 +236,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_margin="10dp">
+            android:layout_margin="@dimen/app_margins">
 
             <ImageButton
                 android:id="@+id/video_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="@dimen/icon_dimensions"
+                android:layout_height="@dimen/icon_dimensions"
                 android:background="#30185C"
                 android:src="@drawable/video"
                 tools:ignore="ContentDescription" />
@@ -251,7 +251,7 @@
                 android:layout_height="wrap_content"
                 android:text="Video"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="@dimen/icon_text_size"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
 
@@ -261,12 +261,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_margin="10dp">
+            android:layout_margin="@dimen/app_margins">
 
             <ImageButton
                 android:id="@+id/gallery_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="@dimen/icon_dimensions"
+                android:layout_height="@dimen/icon_dimensions"
                 android:background="#185C56"
                 android:src="@drawable/gallery"
                 tools:ignore="ContentDescription" />
@@ -276,7 +276,7 @@
                 android:layout_height="wrap_content"
                 android:text="Gallery"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="@dimen/icon_text_size"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
 
@@ -286,13 +286,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_margin="10dp">
+            android:layout_margin="@dimen/app_margins">
 
             <ImageButton
                 android:id="@+id/microphone_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-
+                android:layout_width="@dimen/icon_dimensions"
+                android:layout_height="@dimen/icon_dimensions"
                 android:background="@drawable/circular_shape_2"
                 android:src="@drawable/micro"
                 tools:ignore="ContentDescription"
@@ -301,7 +300,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mic"
+                android:text="Voice"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
                 tools:ignore="HardcodedText" />
@@ -313,12 +312,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_margin="10dp">
+            android:layout_margin="@dimen/app_margins">
 
             <ImageButton
                 android:id="@+id/flash_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="@dimen/icon_dimensions"
+                android:layout_height="@dimen/icon_dimensions"
                 android:background="#F85F23"
                 android:src="@drawable/flashlight"
                 tools:ignore="ContentDescription" />
@@ -329,7 +328,7 @@
                 android:layout_height="wrap_content"
                 android:text="Flash / OFF"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="@dimen/icon_text_size"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
 
