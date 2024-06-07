@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+
+    <!-- City EditText -->
+    <EditText
+        android:id="@+id/city_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="enter_city_hint"
+        android:layout_marginBottom="8dp"
+        android:autofillHints="" />
+    <!--android:hint="@string/enter_city_hint"-->
+
+    <!-- Temperature Button -->
+    <Button
+        android:id="@+id/temperature_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/city_name"
+        android:layout_marginTop="8dp"
+        android:onClick="findTemperature"/>
+        <!--android:text="@string/temperature_button_label"-->
+
+
+    <!-- Current Temperature TextView -->
+    <TextView
+        android:id="@+id/temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/temperature_button"
+        android:text="temperature_label"
+        android:layout_marginTop="16dp"/>
+        <!--android:text="@string/temperature_label"-->
+
+
+    <!-- Minimum Temperature TextView -->
+    <TextView
+        android:id="@+id/min_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/temp"
+        android:text="min_temperature_label"
+        android:layout_marginTop="8dp"/>
+        <!--android:text="@string/min_temperature_label"-->
+
+
+    <!-- Maximum Temperature TextView -->
+    <TextView
+        android:id="@+id/max_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/min_temp"
+        android:text="max_temperature_label"
+        android:layout_marginTop="8dp"/>
+        <!--android:text="@string/max_temperature_label"-->
+
+
+    <!-- Humidity TextView -->
+    <TextView
+        android:id="@+id/humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/max_temp"
+        android:text="humidity_labe"
+        android:layout_marginTop="8dp"/>
+        <!--android:text="@string/humidity_label"-->
+
+
+</RelativeLayout>

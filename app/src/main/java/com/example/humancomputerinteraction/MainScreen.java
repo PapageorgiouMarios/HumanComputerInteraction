@@ -157,6 +157,11 @@ public class MainScreen extends AppCompatActivity{
             startActivity(galleryApp);
         });
 
+        weather_button.setOnClickListener(view -> {
+            Intent weatherApp = new Intent(MainScreen.this, Weather.class);
+            startActivity(weatherApp);
+        });
+
         flash_button.setOnClickListener(view ->
         {
             if (!flash) {
@@ -169,8 +174,6 @@ public class MainScreen extends AppCompatActivity{
                 flash_on_off.setText("Flash / OFF");
             }
         });
-
-
 
         mic.setOnClickListener((view ->
         {

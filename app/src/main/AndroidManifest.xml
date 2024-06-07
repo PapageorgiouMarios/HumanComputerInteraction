@@ -56,6 +56,9 @@
             android:name=".Gallery"
             android:exported="false" />
         <activity
+            android:name=".Weather"
+            android:exported="false" />
+        <activity
             android:name=".MainScreen"
             android:exported="true">
             <intent-filter>
