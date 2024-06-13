@@ -13,9 +13,8 @@ import android.util.Log;
 public class Gallery extends AppCompatActivity {
 
     private ImageView imageView;
-    private Button leftButton, rightButton;
-    private ImageButton backButton, mainScreenButton;
-    private int[] imageIds =  {R.drawable.english , R.drawable.greek, R.drawable.emergency_example };
+    private ImageButton leftButton, rightButton;
+    private int[] imageIds =  {R.drawable.aueb100years , R.drawable.aueb, R.drawable.cs };
     private int currentIndex = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +24,8 @@ public class Gallery extends AppCompatActivity {
         int maxIdx = imageIds.length-1;
 
         imageView = findViewById(R.id.imageView);
-        leftButton = (Button) findViewById(R.id.leftButton);
-        rightButton = (Button) findViewById(R.id.rightButton);
+        leftButton = (ImageButton) findViewById(R.id.leftButton);
+        rightButton = (ImageButton) findViewById(R.id.rightButton);
         imageView.setImageResource(imageIds[currentIndex]);
 
         leftButton.setOnClickListener(new View.OnClickListener() {

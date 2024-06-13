@@ -63,26 +63,13 @@ public class MainScreen extends AppCompatActivity{
 
         getSupportActionBar().hide();
 
-        //----------------------------Date----------------------------
         day_and_date = (TextView) findViewById(R.id.day_date_text);
-        //------------------------------------------------------------
-
-        //-----------------------Month and Year-----------------------
         month_and_year = (TextView) findViewById(R.id.month_year_text);
-        //------------------------------------------------------------
-
-        //--------------------Time----------------------
         hour = (TextView) findViewById(R.id.time_text);
-        //----------------------------------------------
-
-        //--------------------------Voice command Button--------------------------
-        voice_command_button = (ImageButton) findViewById(R.id.microphone_button);
         flash_button = (ImageButton) findViewById(R.id.flash_button);
-        //------------------------------------------------------------------------
 
-        System.out.println("Check .xml file assets");
+        System.out.println("Check .xml file assets");//for debug only
         CheckAssets();
-
         updateDateTime();
 
         new Thread(new Runnable() {
@@ -99,13 +86,13 @@ public class MainScreen extends AppCompatActivity{
             }
         }).start();
 
-        english_voice = new TextToSpeech(this, i -> {
+        english_voice = new TextToSpeech(this, i -> {//not used
             if (i != TextToSpeech.ERROR) {
                 english_voice.setLanguage(Locale.ENGLISH);
             }
         });
 
-        greek_voice = new TextToSpeech(this, i -> {
+        greek_voice = new TextToSpeech(this, i -> {//not used
             if (i != TextToSpeech.ERROR) {
                 greek_voice.setLanguage(new Locale("el", "GR"));
             }
@@ -126,42 +113,13 @@ public class MainScreen extends AppCompatActivity{
         add_contact_button = (ImageButton) findViewById(R.id.contact_activity);
         //----------------------------------------------------------------
 
-        call_button.setOnClickListener(view -> {
-            Intent call_APP = new Intent(MainScreen.this, PhoneCall.class);
-            startActivity(call_APP);
-        });
-
-        notebook_button.setOnClickListener(view -> {
-            Intent notebook_APP = new Intent(MainScreen.this, Notebook.class);
-            startActivity(notebook_APP);
-        });
-
-        sos_button.setOnClickListener(view -> {
-            Intent sos_APP = new Intent(MainScreen.this, EmergencyCall.class);
-            startActivity(sos_APP);
-        });
-
-        wake_button.setOnClickListener(view ->
-        {
-            Intent alarm_APP = new Intent(MainScreen.this, Alarm.class);
-            startActivity(alarm_APP);
-        });
-
-        add_contact_button.setOnClickListener(view -> {
-            Intent contact_APP = new Intent(MainScreen.this, ContactList.class);
-            startActivity(contact_APP);
-        });
-
-        gallery_button.setOnClickListener(view -> {
-            Intent galleryApp = new Intent(MainScreen.this, Gallery.class);
-            startActivity(galleryApp);
-        });
-
-        weather_button.setOnClickListener(view -> {
-            Intent weatherApp = new Intent(MainScreen.this, Weather.class);
-            startActivity(weatherApp);
-        });
-
+        call_button.setOnClickListener(view -> { openCallApp();});
+        notebook_button.setOnClickListener(view -> {openNotebookApp();});
+        sos_button.setOnClickListener(view -> {openSosApp(); });
+        wake_button.setOnClickListener(view ->{openAlarmApp(); });
+        add_contact_button.setOnClickListener(view -> {openContactsApp();});
+        gallery_button.setOnClickListener(view -> {openGalleryApp();});
+        weather_button.setOnClickListener(view -> {openWeatherApp();});
         flash_button.setOnClickListener(view ->
         {
             if (!flash) {
@@ -174,18 +132,11 @@ public class MainScreen extends AppCompatActivity{
                 flash_on_off.setText("Flash / OFF");
             }
         });
-
-        mic.setOnClickListener((view ->
-        {
-            mic.setBackgroundColor(Color.rgb(11, 200, 11));
-
-            recogniseSpeech();
-        }));
+        mic.setOnClickListener((view ->{recogniseSpeech();}));
     }
 
     public void recogniseSpeech()
     {
-
         Intent intent = new Intent
                 (RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
@@ -207,14 +158,12 @@ public class MainScreen extends AppCompatActivity{
             case REQUEST_SPEECH_RECOGNIZER:{
                 if(resultCode==RESULT_OK && null!=data){
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    String a = result.get(0);
-                    Log.d("m",a);
-
-
+                    String voiceCommand = result.get(0);
+                    Log.d("m",voiceCommand);
+                    voiceCommandExecution(voiceCommand);
                 }
             }
         }
-
     }
 
     private void flashSwitch(boolean state) {
@@ -235,7 +184,6 @@ public class MainScreen extends AppCompatActivity{
     }
 
     private void updateDateTime() {
-
         Calendar calendar = Calendar.getInstance();
         String dayDate = dateFormat.format(calendar.getTime());
         String monthYear = monthYearFormat.format(calendar.getTime());
@@ -246,30 +194,19 @@ public class MainScreen extends AppCompatActivity{
         hour.setText(currentTime);
     }
 
-    private void CheckAssets() {
-        if (day_and_date != null) {
-            System.out.println("Day and date text set");
-        }
-
-        if (month_and_year != null) {
-            System.out.println("Month and year text set");
-        }
-
-        if (hour != null) {
-            System.out.println("Hour text set");
-        }
-
-        if (voice_command_button != null) {
-            System.out.println("Voice command button set");
-        }
+    private void CheckAssets() {//maybe we should delete
+        if (day_and_date != null) {System.out.println("Day and date text set");}
+        if (month_and_year != null) {System.out.println("Month and year text set");}
+        if (hour != null) {System.out.println("Hour text set");}
+        if (voice_command_button != null) {System.out.println("Voice command button set");}
     }
 
-    private void Speak(TextToSpeech voice, String sentence) {
+    private void Speak(TextToSpeech voice, String sentence) {//is not used
         voice.speak(sentence, TextToSpeech.QUEUE_FLUSH, null, null);
     }
 
     @Override
-    protected void onPause() {
+    protected void onPause() { //is not used
 
         if (english_voice != null && greek_voice != null) {
             english_voice.stop();
@@ -280,7 +217,52 @@ public class MainScreen extends AppCompatActivity{
     }
 
     @Override
-    public void onBackPressed() {
-        System.out.println("Back pressed nothing happening");
+    public void onBackPressed() {System.out.println("Back pressed nothing happening");}
+
+    protected void openCallApp(){startActivity(new Intent(MainScreen.this, PhoneCall.class));}
+    protected void openNotebookApp(){startActivity(new Intent(MainScreen.this, Notebook.class));}
+    protected void openSosApp(){startActivity(new Intent(MainScreen.this, EmergencyCall.class));}
+    protected void openAlarmApp(){startActivity(new Intent(MainScreen.this, Alarm.class));}
+    protected void openContactsApp(){startActivity(new Intent(MainScreen.this, ContactList.class));}
+    protected void openWeatherApp(){startActivity(new Intent(MainScreen.this, Weather.class));}
+    protected void openGalleryApp()
+    {
+        //old start activity code, incase a problem arises vvv
+        /* Intent galleryApp = new Intent(MainScreen.this, Gallery.class);
+        startActivity(galleryApp);*/
+        startActivity(new Intent(MainScreen.this, Gallery.class));
+    }
+
+    protected void voiceCommandExecution(String voiceCommand)
+    {
+        String vc = voiceCommand.toLowerCase()
+                .replaceAll("open","").replaceAll("app","").replaceAll("up","")
+                .trim();
+        Log.i("VC",vc);
+
+        switch(vc){
+            case "phone":
+            case "call":
+                openCallApp();break;
+            case "note":
+            case "notes":
+            case "notebook":
+            case "notepad":
+                openNotebookApp(); break;
+            case "alarm":
+            case "alarms":
+            case "clock":
+            case "clocks":
+                openAlarmApp(); break;
+            case "contact":
+            case "contacts":
+                openContactsApp(); break;
+            case "weather":
+                openWeatherApp(); break;
+            case "gallery":
+            case "photo":
+            case "photos":
+                openGalleryApp(); break;
+        }
     }
 }
