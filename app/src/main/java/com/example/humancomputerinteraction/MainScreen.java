@@ -119,9 +119,9 @@ public class MainScreen extends AppCompatActivity{
         wake_button.setOnClickListener(view ->{openAlarmApp(); });
         add_contact_button.setOnClickListener(view -> {openContactsApp();});
         gallery_button.setOnClickListener(view -> {openGalleryApp();});
+        photo_button.setOnClickListener(view ->{openCamera();});
         weather_button.setOnClickListener(view -> {openWeatherApp();});
-        flash_button.setOnClickListener(view ->
-        {
+        flash_button.setOnClickListener(view -> {
             if (!flash) {
                 flashSwitch(true);
                 flash = true;
@@ -199,6 +199,14 @@ public class MainScreen extends AppCompatActivity{
         if (month_and_year != null) {System.out.println("Month and year text set");}
         if (hour != null) {System.out.println("Hour text set");}
         if (voice_command_button != null) {System.out.println("Voice command button set");}
+    }
+
+    private void openCamera() {//den doulevei
+        Log.i("main","pic");
+        Intent takePictureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(takePictureIntent);
+        }
     }
 
     private void Speak(TextToSpeech voice, String sentence) {//is not used
