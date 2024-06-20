@@ -2,6 +2,8 @@ package com.example.humancomputerinteraction;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -9,6 +11,7 @@ import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -115,8 +118,10 @@ public class MainScreen extends AppCompatActivity{
 
         call_button.setOnClickListener(view -> { openCallApp();});
         notebook_button.setOnClickListener(view -> {openNotebookApp();});
+        gps_button.setOnClickListener(view -> {openGoogleMaps();});
         sos_button.setOnClickListener(view -> {openSosApp(); });
         wake_button.setOnClickListener(view ->{openAlarmApp(); });
+        video_button.setOnClickListener(view ->{openVideo(); });
         add_contact_button.setOnClickListener(view -> {openContactsApp();});
         gallery_button.setOnClickListener(view -> {openGalleryApp();});
         photo_button.setOnClickListener(view ->{openCamera();});
@@ -201,12 +206,20 @@ public class MainScreen extends AppCompatActivity{
         if (voice_command_button != null) {System.out.println("Voice command button set");}
     }
 
-    private void openCamera() {//den doulevei
+    private void openCamera() {
         Log.i("main","pic");
         Intent takePictureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null)
             startActivity(takePictureIntent);
+    }
+
+    private void openVideo() {
+        Log.i("main","vid");
+        Intent startVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        if (startVideoIntent.resolveActivity(getPackageManager()) == null) {
+            return;
         }
+        startActivity(startVideoIntent);
     }
 
     private void Speak(TextToSpeech voice, String sentence) {//is not used
@@ -239,6 +252,17 @@ public class MainScreen extends AppCompatActivity{
         /* Intent galleryApp = new Intent(MainScreen.this, Gallery.class);
         startActivity(galleryApp);*/
         startActivity(new Intent(MainScreen.this, Gallery.class));
+    }
+    private void openGoogleMaps() {
+        Intent mapIntent = new Intent(Intent.ACTION_MAIN);
+        mapIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        mapIntent.setComponent(new ComponentName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity"));
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
+        } else {
+            Toast.makeText(this, "Google Maps app is not installed", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     protected void voiceCommandExecution(String voiceCommand)
