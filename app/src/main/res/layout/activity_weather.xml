@@ -1,38 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#665439E3"
+    android:background="#3893C1"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:context=".Weather">
 
-    <!-- City EditText -->
-    <EditText
-        android:id="@+id/city_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter City Name"
-        android:layout_marginBottom="8dp"
-        android:autofillHints="" />
-
-    <!-- Temperature Button -->
-    <Button
-        android:id="@+id/temperature_button"
+    <TextView
+        android:id="@+id/chosen_city"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/city_name"
-        android:layout_marginTop="8dp"
-        android:text="Find Temprature"
-        android:onClick="findTemperature"/>
+        android:layout_height="50dp"
+        android:textSize="40sp"
+        android:textStyle="bold|italic"
+        android:text="Athens"
+        android:textColor="#FAF9F6"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_horizontal"/>
+
+
 
     <!-- Current Temperature TextView -->
     <TextView
         android:id="@+id/temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/temperature_button"
         android:layout_marginTop="16dp"
-        android:text="Temprature: "
+        android:text="Temperature: "
+        android:textSize="25sp"
+        android:textColor="#FAF9F6"
         android:textStyle="bold"/>
 
     <!-- Minimum Temperature TextView -->
@@ -40,29 +37,50 @@
         android:id="@+id/min_temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/temp"
         android:layout_marginTop="8dp"
-        android:text="Minimum Temprature: "
-        android:textStyle="italic"/>
+        android:text="Minimum Temperature: "
+        android:textSize="25sp"
+        android:textColor="#FAF9F6"/>
 
     <!-- Maximum Temperature TextView -->
     <TextView
         android:id="@+id/max_temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/min_temp"
         android:layout_marginTop="8dp"
-        android:text="Maximum Temprature: "
-        android:textStyle="italic"/>
+        android:text="Maximum Temperature: "
+        android:textSize="25sp"
+        android:textColor="#FAF9F6"/>
 
     <!-- Humidity TextView -->
     <TextView
         android:id="@+id/humidity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/max_temp"
         android:layout_marginTop="8dp"
         android:text="Humidity: "
-        android:textStyle="italic"/>
+        android:textSize="25sp"
+        android:textColor="#FAF9F6"/>
 
-</RelativeLayout>
+    <!-- City EditText -->
+    <EditText
+        android:id="@+id/city_name"
+        android:layout_width="match_parent"
+        android:layout_marginTop="33dp"
+        android:layout_height="50dp"
+        android:textSize="25sp"
+        android:hint="Enter City Name"
+        android:textColor="#FAF9F6"
+        android:autofillHints="" />
+
+    <!-- Temperature Button -->
+    <Button
+        android:id="@+id/temperature_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Find Temperature"
+        android:textColor="#FAF9F6"
+        android:onClick="findTemperature"/>
+
+</LinearLayout>

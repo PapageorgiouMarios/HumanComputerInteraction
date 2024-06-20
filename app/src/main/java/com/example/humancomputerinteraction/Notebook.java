@@ -70,7 +70,7 @@ public class Notebook extends AppCompatActivity
                 int item_to_delete = i;
                 new AlertDialog.Builder(Notebook.this)
                         .setTitle("Are you sure?")
-                        .setMessage("Delete this note?")
+                        .setMessage("Delete this note: " + notes.get(item_to_delete))
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i)

@@ -1,5 +1,7 @@
 package com.example.humancomputerinteraction;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,20 +10,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DecimalFormat;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONObject;
 public class Weather extends AppCompatActivity {
 
     private EditText cityEditText;
+    private TextView displayedCityName;
     private TextView temperatureTextView;
     private TextView minTemperatureTextView;
     private TextView maxTemperatureTextView;
     private TextView humidityTextView;
+    private Button temperatureButton;
+    private String preset_city = "Athens";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,23 +41,37 @@ public class Weather extends AppCompatActivity {
         minTemperatureTextView = findViewById(R.id.min_temp);
         maxTemperatureTextView = findViewById(R.id.max_temp);
         humidityTextView = findViewById(R.id.humidity);
+        temperatureButton = findViewById(R.id.temperature_button);
+
+        // Initial temperature "update"
+        findTemperature(preset_city);
 
         Button temperatureButton = findViewById(R.id.temperature_button);
         temperatureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                findTemperature();
+
+                String city = cityEditText.getText().toString().trim();
+                if (!city.isEmpty()) {
+                    findTemperature(city);
+                } else {
+                    Log.e("MainActivity", "City name is empty");
+                }
             }
         });
     }
 
-    private void findTemperature() {
-        String city = cityEditText.getText().toString().trim();
-        if (!city.isEmpty()) {
-            new WeatherAsyncTask().execute(city);
-        } else {
-            Log.e("MainActivity", "City name is empty");
-        }
+    private void findTemperature(String city) {
+
+        if (city.isEmpty() || city.equals(" ")){city = "athens";}
+
+        displayedCityName = findViewById(R.id.chosen_city);
+
+        //Set first letter to uppercase
+        String cityOnDisplay = city.substring(0, 1).toUpperCase() + city.substring(1);
+        displayedCityName.setText(cityOnDisplay);
+
+        new WeatherAsyncTask().execute(city);
     }
     private class WeatherAsyncTask extends AsyncTask<String, Void, JSONObject> {
 
