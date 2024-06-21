@@ -121,9 +121,9 @@ public class MainScreen extends AppCompatActivity{
         gps_button.setOnClickListener(view -> {openGoogleMaps();});
         sos_button.setOnClickListener(view -> {openSosApp(); });
         wake_button.setOnClickListener(view ->{openAlarmApp(); });
-        video_button.setOnClickListener(view ->{openVideo(); });
+        video_button.setOnClickListener(view ->{openVideo();});
         add_contact_button.setOnClickListener(view -> {openContactsApp();});
-        gallery_button.setOnClickListener(view -> {openGalleryApp();});
+        gallery_button.setOnClickListener(view -> openGalleryApp());
         photo_button.setOnClickListener(view ->{openCamera();});
         weather_button.setOnClickListener(view -> {openWeatherApp();});
         flash_button.setOnClickListener(view -> {
@@ -248,7 +248,7 @@ public class MainScreen extends AppCompatActivity{
     protected void openWeatherApp(){startActivity(new Intent(MainScreen.this, Weather.class));}
     protected void openGalleryApp()
     {
-        //old start activity code, incase a problem arises vvv
+        //old start activity code, in case a problem arises vvv
         /* Intent galleryApp = new Intent(MainScreen.this, Gallery.class);
         startActivity(galleryApp);*/
         startActivity(new Intent(MainScreen.this, Gallery.class));
