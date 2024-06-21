@@ -16,7 +16,6 @@ public class PhoneCallContactAdapter extends BaseAdapter
 {
     private final Context context;
     private final ArrayList<String> json_contacts;
-
     private CallButtonClickListener buttonClickListener;
     public PhoneCallContactAdapter(Context context, ArrayList<String> json_contacts)
     {

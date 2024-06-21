@@ -45,6 +45,9 @@
             android:name=".PhoneCall"
             android:exported="false" />
         <activity
+            android:name=".PhoneCallManual"
+            android:exported="false" />
+        <activity
             android:name=".NotebookEdit"
             android:exported="false" />
         <activity

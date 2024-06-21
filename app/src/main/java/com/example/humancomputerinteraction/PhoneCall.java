@@ -20,15 +20,13 @@ import java.util.HashSet;
 
 public class PhoneCall extends AppCompatActivity implements PhoneCallContactAdapter.CallButtonClickListener
 {
-    EditText phone_input;
-    Button call_input;
-    static int PERMISSION_CODE = 100;
-
-    ListView who_to_call_list;
-
-    static ArrayList<String> contacts;
-
-    SharedPreferences sp;
+    protected EditText phone_input;
+    protected Button call_input;
+    protected Button call_manually_button;
+    protected static int PERMISSION_CODE = 100;
+    protected ListView who_to_call_list;
+    protected static ArrayList<String> contacts;
+    protected SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,8 +35,8 @@ public class PhoneCall extends AppCompatActivity implements PhoneCallContactAdap
         setContentView(R.layout.activity_phone_call);
 
         who_to_call_list = (ListView) findViewById(R.id.saved_contacts);
-
-        phone_input = (EditText) findViewById(R.id.type_phone);
+        call_manually_button = (Button) findViewById(R.id.call_manually);
+        //phone_input = (EditText) findViewById(R.id.type_phone);
         call_input = (Button) findViewById(R.id.call_button);
 
         if(ContextCompat.checkSelfPermission(PhoneCall.this, Manifest.permission.CALL_PHONE)
@@ -54,19 +52,15 @@ public class PhoneCall extends AppCompatActivity implements PhoneCallContactAdap
             makePhoneCall(number_to_call);
         });
 
+        call_manually_button.setOnClickListener(view -> {callManually();});
+
         contacts = new ArrayList<>();
 
         sp = this.getSharedPreferences("com.example.humancomputerinteraction", Context.MODE_PRIVATE);
         HashSet<String> contactSet = (HashSet<String>) sp.getStringSet("contacts", null);
 
-        if (contactSet == null || contactSet.isEmpty())
-        {
-            contacts = new ArrayList<>();
-        }
-        else
-        {
-            contacts = new ArrayList<>(contactSet);
-        }
+        if (contactSet == null || contactSet.isEmpty()){ contacts = new ArrayList<>(); }
+        else{ contacts = new ArrayList<>(contactSet); }
 
         PhoneCallContactAdapter who_to_call_adapter = new PhoneCallContactAdapter(PhoneCall.this, contacts);
         who_to_call_list.setAdapter(who_to_call_adapter);
@@ -80,10 +74,15 @@ public class PhoneCall extends AppCompatActivity implements PhoneCallContactAdap
         callIntent.setData(Uri.parse("tel:" + number));
         startActivity(callIntent);
     }
-
     @Override
     public void onCallButtonClicked(String phoneNumber)
     {
         makePhoneCall(phoneNumber);
     }
+
+    public void callManually()
+    {
+        startActivity(new Intent(PhoneCall.this, PhoneCallManual.class));
+    }
+
 }
