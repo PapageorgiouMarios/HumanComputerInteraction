@@ -104,25 +104,4 @@ public class Notebook extends AppCompatActivity
         Intent main_window = new Intent(getApplicationContext(), MainScreen.class);
         startActivity(main_window);
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.add_note_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item)//maybe this should go
-    {
-        super.onOptionsItemSelected(item);
-
-        if(item.getItemId() == R.id.add_note)
-        {
-            startActivity(new Intent(getApplicationContext(), NotebookEdit.class));
-            return true;
-        }
-        return false;
-    }
 }

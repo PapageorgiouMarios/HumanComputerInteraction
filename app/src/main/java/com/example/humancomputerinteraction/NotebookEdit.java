@@ -128,26 +128,4 @@ public class NotebookEdit extends AppCompatActivity
             }
         }
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.save_note_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item)
-    {
-        super.onOptionsItemSelected(item);
-
-        if(item.getItemId() == R.id.save_note)
-        {
-            startActivity(new Intent(getApplicationContext(), Notebook.class));
-            finish();
-            return true;
-        }
-        return false;
-    }
 }

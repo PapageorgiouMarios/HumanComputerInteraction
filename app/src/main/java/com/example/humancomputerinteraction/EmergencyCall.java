@@ -32,23 +32,16 @@ public class EmergencyCall extends AppCompatActivity implements AdapterView.OnIt
     {
         emergencyContacts = new ArrayList<>();
 
-        emergencyContacts.add(new EmergencyContactModel(R.drawable.police, "Ελληνική Αστυνομία",
+        emergencyContacts.add(new EmergencyContactModel(R.drawable.police, "ΑΣΤΥΝΟΜΊΑ",
                 "100"));
 
-        emergencyContacts.add(new EmergencyContactModel(R.drawable.seas, "Λιμενικό Σώμα",
-                "108"));
 
-        emergencyContacts.add(new EmergencyContactModel(R.drawable.fire, "Πυροσβεστικό Σώμα Ελλάδας",
+        emergencyContacts.add(new EmergencyContactModel(R.drawable.fire, "ΠΥΡΟΣΒΕΤΣΙΚΉ",
                 "199"));
 
-        emergencyContacts.add(new EmergencyContactModel(R.drawable.politiki, "Πολιτική Προστασία Ελλάδας",
-                "112"));
 
-        emergencyContacts.add(new EmergencyContactModel(R.drawable.ekab, "Εθνικό Κέντρο Άμεσης Βοήθειας",
+        emergencyContacts.add(new EmergencyContactModel(R.drawable.ekab, "ΆΜΕΣΗ ΒΟΉΘΕΙΑ",
                 "166"));
-
-        emergencyContacts.add(new EmergencyContactModel(R.drawable.poison, "Κέντρο Δηλητηριάσεων",
-                "2107793777"));
 
         return emergencyContacts;
     }
