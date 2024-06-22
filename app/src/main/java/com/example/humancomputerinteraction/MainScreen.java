@@ -53,9 +53,7 @@ public class MainScreen extends AppCompatActivity{
     ImageButton mic;
     ImageButton flash_button;
     boolean flash = false;
-
     TextView flash_on_off;
-
     static final int REQUEST_SPEECH_RECOGNIZER = 3000;
 
 
@@ -222,20 +220,6 @@ public class MainScreen extends AppCompatActivity{
         startActivity(startVideoIntent);
     }
 
-    private void Speak(TextToSpeech voice, String sentence) {//is not used
-        voice.speak(sentence, TextToSpeech.QUEUE_FLUSH, null, null);
-    }
-
-    @Override
-    protected void onPause() { //is not used
-
-        if (english_voice != null && greek_voice != null) {
-            english_voice.stop();
-            greek_voice.stop();
-        }
-
-        super.onPause();
-    }
 
     @Override
     public void onBackPressed() {System.out.println("Back pressed nothing happening");}
@@ -262,7 +246,6 @@ public class MainScreen extends AppCompatActivity{
         } else {
             Toast.makeText(this, "Google Maps app is not installed", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     protected void voiceCommandExecution(String voiceCommand)

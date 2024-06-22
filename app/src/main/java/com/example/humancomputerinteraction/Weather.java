@@ -127,9 +127,13 @@ public class Weather extends AppCompatActivity {
                     tempMinCelsius = Double.parseDouble(df.format(tempMinCelsius));
                     tempMaxCelsius = Double.parseDouble(df.format(tempMaxCelsius));
 
-                    temperatureTextView.setText("Temperature: " + temperatureCelsius + "°C");
-                    minTemperatureTextView.setText("Minimum Temperature: " + tempMinCelsius + "°C");
-                    maxTemperatureTextView.setText("Maximum Temperature: " + tempMaxCelsius + "°C");
+                    int temperatureCelsiusInt =  (int) temperatureCelsius;
+                    int tempMinCelsiusInt = (int) tempMinCelsius;
+                    int tempMaxCelsiusInt = (int) tempMaxCelsius;
+
+                    temperatureTextView.setText("Temperature: " + temperatureCelsiusInt + "°C");
+                    maxTemperatureTextView.setText("Maximum Temperature: " + tempMaxCelsiusInt + "°C");
+                    minTemperatureTextView.setText("Minimum Temperature: " + tempMinCelsiusInt + "°C");
                     humidityTextView.setText("Humidity: " + humidity + "%");
                 } catch (org.json.JSONException e) {
                     Log.e("WeatherAsyncTask", "Error parsing JSON response: " + e.getMessage());
