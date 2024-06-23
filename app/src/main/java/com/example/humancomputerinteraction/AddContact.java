@@ -32,7 +32,6 @@ public class AddContact extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_contact);
-        Log.d("Marios", "Add Contact Activity started!");
 
         sp = this.getSharedPreferences("com.example.humancomputerinteraction", Context.MODE_PRIVATE);
 

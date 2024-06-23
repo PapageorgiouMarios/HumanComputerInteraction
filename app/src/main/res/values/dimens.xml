@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="icon_dimensions">75dp</dimen>
-    <dimen name="icon_text_size">16sp</dimen>
-    <dimen name="app_v_margins">7dp</dimen>
-    <dimen name="app_h_margins">17dp</dimen>
+    <dimen name="icon_dimensions">85dp</dimen>
+    <dimen name="icon_text_size">17sp</dimen>
+    <dimen name="app_v_margins">10dp</dimen>
+    <dimen name="app_h_margins">20dp</dimen>
     <dimen name="phone_button_size">32sp</dimen>
 </resources>

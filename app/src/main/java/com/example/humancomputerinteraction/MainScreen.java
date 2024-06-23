@@ -67,7 +67,6 @@ public class MainScreen extends AppCompatActivity{
         day_and_date = (TextView) findViewById(R.id.day_date_text);
         month_and_year = (TextView) findViewById(R.id.month_year_text);
         hour = (TextView) findViewById(R.id.time_text);
-        flash_button = (ImageButton) findViewById(R.id.flash_button);
 
         System.out.println("Check .xml file assets");//for debug only
         CheckAssets();
@@ -109,7 +108,6 @@ public class MainScreen extends AppCompatActivity{
         photo_button = (ImageButton) findViewById(R.id.photo_button);
         video_button = (ImageButton) findViewById(R.id.video_button);
         gallery_button = (ImageButton) findViewById(R.id.gallery_button);
-        flash_on_off = (TextView) findViewById(R.id.flash_on_off_text);
         mic = (ImageButton) findViewById(R.id.microphone_button);
         add_contact_button = (ImageButton) findViewById(R.id.contact_activity);
         //----------------------------------------------------------------
@@ -124,17 +122,6 @@ public class MainScreen extends AppCompatActivity{
         gallery_button.setOnClickListener(view -> openGalleryApp());
         photo_button.setOnClickListener(view ->{openCamera();});
         weather_button.setOnClickListener(view -> {openWeatherApp();});
-        flash_button.setOnClickListener(view -> {
-            if (!flash) {
-                flashSwitch(true);
-                flash = true;
-                flash_on_off.setText("Flash / ON");
-            } else {
-                flashSwitch(false);
-                flash = false;
-                flash_on_off.setText("Flash / OFF");
-            }
-        });
         mic.setOnClickListener((view ->{recogniseSpeech();}));
     }
 
@@ -143,7 +130,7 @@ public class MainScreen extends AppCompatActivity{
         Intent intent = new Intent
                 (RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Say Something");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Say what app you want to open");
 
         try {
             startActivityForResult(intent, REQUEST_SPEECH_RECOGNIZER);
@@ -230,13 +217,7 @@ public class MainScreen extends AppCompatActivity{
     protected void openAlarmApp(){startActivity(new Intent(MainScreen.this, Alarm.class));}
     protected void openContactsApp(){startActivity(new Intent(MainScreen.this, ContactList.class));}
     protected void openWeatherApp(){startActivity(new Intent(MainScreen.this, Weather.class));}
-    protected void openGalleryApp()
-    {
-        //old start activity code, in case a problem arises vvv
-        /* Intent galleryApp = new Intent(MainScreen.this, Gallery.class);
-        startActivity(galleryApp);*/
-        startActivity(new Intent(MainScreen.this, Gallery.class));
-    }
+    protected void openGalleryApp(){startActivity(new Intent(MainScreen.this, Gallery.class));}
     private void openGoogleMaps() {
         Intent mapIntent = new Intent(Intent.ACTION_MAIN);
         mapIntent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -275,9 +256,14 @@ public class MainScreen extends AppCompatActivity{
             case "weather":
                 openWeatherApp(); break;
             case "gallery":
-            case "photo":
+            case "pictures":
             case "photos":
+            case "images":
                 openGalleryApp(); break;
+            case "photo camera":
+                openCamera();break;
+            case "video camera":
+                openVideo();break;
         }
     }
 }

@@ -12,7 +12,6 @@
         android:layout_height="60dp"
         android:layout_margin="10dp"
         android:textSize="35sp"
-        android:hint="Type phone number here"
         android:textColor="@color/black"
         android:background="@color/white"
         android:text=""/>
