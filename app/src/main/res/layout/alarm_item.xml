@@ -60,7 +60,7 @@
 
     <Button
         android:id="@+id/delete_alarm"
-        android:layout_width="85dp"
+        android:layout_width="95dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_toEndOf="@id/switch_on_off"

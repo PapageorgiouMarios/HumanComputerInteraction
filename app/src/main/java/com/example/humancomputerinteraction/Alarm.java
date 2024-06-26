@@ -187,4 +187,9 @@ public class Alarm extends AppCompatActivity
         super.onDestroy();
         stopCheckingAlarms();
     }
+    @Override
+    public void onBackPressed() {
+        Intent main_window = new Intent(getApplicationContext(), MainScreen.class);
+        startActivity(main_window);
+    }
 }

@@ -55,4 +55,10 @@ public class ContactList extends AppCompatActivity {
             startActivity(add_contact_activity);
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent main_window = new Intent(getApplicationContext(), MainScreen.class);
+        startActivity(main_window);
+    }
 }
